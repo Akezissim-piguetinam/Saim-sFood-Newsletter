@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Newsletter – Saim's Food</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&family=Pacifico&display=swap" rel="stylesheet"/>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #f5f0e0;
+    font-family: 'Nunito', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 30px 16px;
+  }
+
+  /* ══════════════════════════
+     SECTION NEWSLETTER
+  ══════════════════════════ */
+  .newsletter-section {
+    width: 100%;
+    max-width: 480px;
+  }
+
+  /* Titre bandeau vert */
+  .section-title {
+    text-align: center;
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #3a3a3a;
+    background: #d4e8b0;
+    padding: 10px 20px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    letter-spacing: 0.03em;
+  }
+
+  /* Carte principale */
+  .newsletter-card {
+    background: #fff;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  }
+
+  /* Bandeau header illustré */
+  .nl-header {
+    background: linear-gradient(135deg, #5aab3f 0%, #3d8a28 100%);
+    padding: 28px 24px 24px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Cercles décoratifs */
+  .nl-header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.07);
+  }
+  .nl-header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: -30px;
+    width: 100px; height: 100px;
+    border-radius: 50%;
+    background: rgba(244,168,37,0.15);
+  }
+
+  .nl-emoji {
+    font-size: 2.4rem;
+    display: block;
+    margin-bottom: 8px;
+    animation: bounce 2s ease-in-out infinite;
+  }
+  @keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50%       { transform: translateY(-6px); }
+  }
+
+  .nl-header-title {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 6px;
+    position: relative;
+    z-index: 1;
+  }
+  .nl-header-title span {
+    color: #f4e060;
+  }
+
+  .nl-header-sub {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.85);
+    font-weight: 600;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Corps de la carte */
+  .nl-body {
+    padding: 22px 20px 24px;
+  }
+
+  /* Avantages */
+  .nl-perks {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 22px;
+  }
+
+  .perk {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #f9f6ec;
+    border-radius: 8px;
+    padding: 10px 14px;
+    border-left: 3px solid #5aab3f;
+    animation: slideIn 0.5s ease both;
+  }
+  .perk:nth-child(1) { animation-delay: 0.1s; }
+  .perk:nth-child(2) { animation-delay: 0.2s; }
+  .perk:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes slideIn {
+    from { opacity: 0; transform: translateX(-12px); }
+    to   { opacity: 1; transform: translateX(0); }
+  }
+
+  .perk-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+  }
+  .perk-text {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #3a3a3a;
+    line-height: 1.4;
+  }
+  .perk-text span {
+    color: #5aab3f;
+  }
+
+  /* Formulaire */
+  .nl-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nl-form label {
+    font-size: 0.78rem;
+    font-weight: 800;
+    color: #555;
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .nl-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e8e0cc;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #3a3a3a;
+    background: #fdfaf3;
+    transition: border-color 0.25s, box-shadow 0.25s;
+    outline: none;
+  }
+  .nl-input::placeholder { color: #bbb; font-weight: 600; }
+  .nl-input:focus {
+    border-color: #5aab3f;
+    box-shadow: 0 0 0 3px rgba(90,171,63,0.15);
+  }
+
+  /* Bouton */
+  .nl-btn {
+    width: 100%;
+    padding: 13px;
+    background: linear-gradient(135deg, #f4a825, #e8920d);
+    color: #fff;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 900;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    letter-spacing: 0.04em;
+    transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+    margin-top: 4px;
+    position: relative;
+    overflow: hidden;
+  }
+  .nl-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(255,255,255,0);
+    transition: background 0.2s;
+  }
+  .nl-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(244,168,37,0.45);
+    background: linear-gradient(135deg, #f9b830, #f4a825);
+  }
+  .nl-btn:active {
+    transform: translateY(0);
+    box-shadow: none;
+  }
+
+  /* Mention RGPD */
+  .nl-rgpd {
+    text-align: center;
+    font-size: 0.68rem;
+    color: #aaa;
+    font-weight: 600;
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+  .nl-rgpd a { color: #5aab3f; text-decoration: none; }
+
+  /* ── Message succès ── */
+  .nl-success {
+    display: none;
+    text-align: center;
+    padding: 30px 20px;
+    animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+  }
+  @keyframes popIn {
+    from { opacity: 0; transform: scale(0.8); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  .nl-success .success-icon { font-size: 3rem; display: block; margin-bottom: 12px; }
+  .nl-success h3 {
+    font-family: 'Pacifico', cursive;
+    font-size: 1.2rem;
+    color: #5aab3f;
+    margin-bottom: 8px;
+  }
+  .nl-success p { font-size: 0.82rem; color: #777; font-weight: 600; line-height: 1.6; }
+
+  /* Compteur abonnés */
+  .nl-counter {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    margin-top: 14px;
+    font-size: 0.72rem;
+    font-weight: 700;
+    color: #888;
+  }
+  .nl-counter .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #5aab3f;
+    animation: pulse 1.8s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%       { opacity: 0.5; transform: scale(0.7); }
+  }
+</style>
+</head>
+<body>
+
+<section class="newsletter-section">
+
+  <!-- Titre bandeau -->
+  <div class="section-title">📧 Notre Newsletter</div>
+
+  <div class="newsletter-card">
+
+    <!-- Header vert -->
+    <div class="nl-header">
+      <span class="nl-emoji">🍕</span>
+      <h2 class="nl-header-title">Saim's <span>Food</span></h2>
+      <p class="nl-header-sub">Restez connectés à nos meilleures offres !</p>
+    </div>
+
+    <!-- Corps -->
+    <div class="nl-body">
+
+      <!-- Avantages -->
+      <div class="nl-perks">
+        <div class="perk">
+          <span class="perk-icon">🎁</span>
+          <div class="perk-text">Recevez nos <span>promotions exclusives</span> en avant-première</div>
+        </div>
+        <div class="perk">
+          <span class="perk-icon">🍽️</span>
+          <div class="perk-text">Découvrez nos <span>nouveaux plats</span> chaque semaine</div>
+        </div>
+        <div class="perk">
+          <span class="perk-icon">⚡</span>
+          <div class="perk-text">Profitez du <span>Méga Promo Mercredi</span> en priorité</div>
+        </div>
+      </div>
+
+      <!-- Formulaire -->
+      <div id="nl-form-wrapper">
+        <div class="nl-form">
+          <div>
+            <label for="nl-name">Votre prénom</label>
+            <input id="nl-name" class="nl-input" type="text" placeholder="Ex : Kofi, Ama, Jean..."/>
+          </div>
+          <div>
+            <label for="nl-email">Votre adresse e-mail</label>
+            <input id="nl-email" class="nl-input" type="email" placeholder="exemple@email.com"/>
+          </div>
+          <button class="nl-btn" onclick="handleSubscribe()">
+            🔔 Je m'abonne gratuitement !
+          </button>
+        </div>
+        <p class="nl-rgpd">
+          Pas de spam. Désabonnement possible à tout moment.<br/>
+          Vos données sont protégées — <a href="#">politique de confidentialité</a>
+        </p>
+      </div>
+
+      <!-- Message succès (caché par défaut) -->
+      <div class="nl-success" id="nl-success">
+        <span class="success-icon">🎉</span>
+        <h3>Bienvenue !</h3>
+        <p>Merci de rejoindre la famille <strong>Saim's Food</strong> !<br/>
+        Vous recevrez bientôt nos meilleures offres.</p>
+      </div>
+
+      <!-- Compteur live -->
+      <div class="nl-counter">
+        <div class="dot"></div>
+        <span>+1 200 abonnés nous font déjà confiance</span>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<script>
+  function handleSubscribe() {
+    const name  = document.getElementById('nl-name').value.trim();
+    const email = document.getElementById('nl-email').value.trim();
+
+    if (!name) {
+      document.getElementById('nl-name').focus();
+      document.getElementById('nl-name').style.borderColor = '#e85d3f';
+      setTimeout(() => document.getElementById('nl-name').style.borderColor = '', 1500);
+      return;
+    }
+    if (!email || !email.includes('@')) {
+      document.getElementById('nl-email').focus();
+      document.getElementById('nl-email').style.borderColor = '#e85d3f';
+      setTimeout(() => document.getElementById('nl-email').style.borderColor = '', 1500);
+      return;
+    }
+
+    // Affiche le succès
+    document.getElementById('nl-form-wrapper').style.display = 'none';
+    document.getElementById('nl-success').style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
